@@ -7,7 +7,7 @@ money = 30
 beer_price = 30
 
 if age >= 18:
-    if money >= 30:
+    if money >= beer_price:
         print('Můžeš si koupit pivo.')
         balance = money - beer_price
         print('Zůstatek peněz na účtu je po koupi ' + str(balance) + ' Kč.')
@@ -20,23 +20,40 @@ else:
 # Složitější úkol
 ticket_price = 45
 
-age = input("Zadejte věk: ")
-
-for i in range(4):
+attempts = 0
+while attempts < 5:
     try:
-        val = float(age)
-        if float(age) < 0:
-            age = float(input("Věk neexistuje. Zadejte věk znovu: "))
+        age = float(input('Zadejte věk: '))
+        if age < 0:
+            print('Věk nemůže být záporný')
+            attempts += 1
         else:
             break
     except ValueError:
-        age = input("To není číslo. Zadejte věk znovu: ")
-
-try:
-    val = float(age)
-except ValueError:
-    print("Zadali jste požadavek 5x špatně. Nemáte nárok na lístek. Jděte pěšky.")
+        print('To není číslo')
+        attempts += 1
+if attempts == 5:
+    print('Zadali jste požadavek 5x špatně. Nemáte nárok na lístek. Jděte pěšky.')
     exit()
+
+# Stará verze (opravená výše)
+# age = input("Zadejte věk: ")
+#
+# for i in range(4):
+#     try:
+#         val = float(age)
+#         if float(age) < 0:
+#             age = float(input("Věk neexistuje. Zadejte věk znovu: "))
+#         else:
+#             break
+#     except ValueError:
+#         age = input("To není číslo. Zadejte věk znovu: ")
+#
+# try:
+#     val = float(age)
+# except ValueError:
+#     print("Zadali jste požadavek 5x špatně. Nemáte nárok na lístek. Jděte pěšky.")
+#     exit()
 
 age = float(age)
 
